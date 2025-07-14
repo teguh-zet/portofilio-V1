@@ -23,33 +23,75 @@ const Contact = () => {
       setShowAlert(false);
     }, 5000);
   };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setIsLoading(true);
 
-    try {
-      console.log("From submitted:", formData);
-      await emailjs.send(
-        "service_79b0nyj",
-        "template_17us8im",
-        {
-          from_name: formData.name,
-          to_name: "Ali",
-          from_email: formData.email,
-          to_email: "AliSanatiDev@gmail.com",
-          message: formData.message,
-        },
-        "pn-Bw_mS1_QQdofuV"
-      );
-      setIsLoading(false);
-      setFormData({ name: "", email: "", message: "" });
-      showAlertMessage("success", "You message has been sent!");
-    } catch (error) {
-      setIsLoading(false);
-      console.log(error);
-      showAlertMessage("danger", "Somthing went wrong!");
-    }
+  //   try {
+  //     console.log("From submitted:", formData);
+  //     await emailjs.send(
+  //       "service_38dfnoo",
+  //       "template_3ntxkfp",
+  //       {
+  //         // Sesuai dengan {{from_name}} di body email
+  //         from_name: formData.name, 
+
+  //         // DITAMBAHKAN: Sesuai dengan {{from_me}} di subject email
+  //         from_me: formData.name, 
+
+  //         // Sesuai dengan {{to_name}} di body email
+  //         to_name: "teguh", // Sebaiknya sesuaikan dengan nama di template Anda
+
+  //         // DIUBAH: Menggunakan `reply_to` agar sesuai dengan template {{reply_to}}
+  //         reply_to: formData.email, 
+
+  //         // Anda bisa menghapus `to_email` karena sudah di-set di template,
+  //         // tapi mengirimnya lagi seperti ini juga tidak masalah (override).
+  //         to_email: "zetteaz@gmail.com", 
+
+  //         // Sesuai dengan {{message}} di body email
+  //         message: formData.message, 
+  //       },
+  //       "pn-28skRfbbItZPKCFgV"
+  //     );
+  //     setIsLoading(false);
+  //     setFormData({ name: "", email: "", message: "" });
+  //     showAlertMessage("success", "You message has been sent!");
+  //   } catch (error) {
+  //     setIsLoading(false);
+  //     console.log(error);
+  //     showAlertMessage("danger", "Somthing went wrong!");
+  //   }
+  // };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsLoading(true);
+
+  console.log("Public Key yang akan dikirim:", import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+  // Objek ini adalah bagian terpenting. Pastikan semua nama properti (kiri)
+  // cocok dengan variabel {{...}} di template EmailJS Anda.
+  const templateParams = {
+    from_name: formData.name,
+    from_me: formData.name,      // Untuk {{from_me}} di subject
+    to_name: "teguh",            // Untuk {{to_name}}
+    reply_to: formData.email,    // Untuk {{reply_to}}
+    from_email: formData.email,
+    message: formData.message,
   };
+q
+  try {
+    await emailjs.send(import.meta.env.VITE_EMAILJS_SERVICE_ID, import.meta.env.VITE_EMAILJS_TEMPLATE_ID, templateParams, import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+
+    setIsLoading(false);
+    setFormData({ name: "", email: "", message: "" });
+    showAlertMessage("success", "Pesan Anda telah terkirim!");
+
+  } catch (error) {
+    setIsLoading(false);
+    console.error("EmailJS error:", error); // Gunakan console.error untuk detail
+    showAlertMessage("danger", "Terjadi kesalahan, coba lagi.");
+  }
+};
   return (
     <section className="relative flex items-center c-space section-spacing">
       <Particles
@@ -78,7 +120,7 @@ const Contact = () => {
               name="name"
               type="text"
               className="field-input field-input-focus"
-              placeholder="John Doe"
+              placeholder="John "
               autoComplete="name"
               value={formData.name}
               onChange={handleChange}
@@ -94,7 +136,7 @@ const Contact = () => {
               name="email"
               type="email"
               className="field-input field-input-focus"
-              placeholder="JohnDoe@email.com"
+              placeholder="John@email.com"
               autoComplete="email"
               value={formData.email}
               onChange={handleChange}

@@ -7,6 +7,7 @@ export function Frameworks() {
     "cplusplus",
     "csharp",
     "css3",
+    "java",
     "dotnet",
     "dotnetcore",
     "git",
