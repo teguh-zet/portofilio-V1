@@ -1,33 +1,34 @@
 export const myProjects = [
   {
     id: 1,
-    title: "E-commerce Platform",
-    description:
-      "Facilitates purchases from international websites like Amazon and eBay, allowing customers to shop from these sites and have products delivered domestically.",
+    title: "Budget Tracker & AI Financial Advice ",
+    description: "An AI-powered financial advisor and budget tracker that helps users manage their personal finances, track expenses, and receive intelligent recommendations for better money management.",
+
     subDescription: [
-      "Built a scalable application with ASP.NET Core MVC, integrating global platforms like Amazon for domestic delivery.",
-      "Implemented secure authentication and database management using ASP.NET Core Identity and Entity Framework Core.",
-      "Designed a responsive frontend with Tailwind CSS, enhancing user experience.",
-      "Added payment systems, localization, and product filtering for functionality improvements.",
-    ],
-    href: "",
-    logo: "",
-    image: "/assets/projects/accessories.jpg",
+  "Developed a full-stack application using React for the frontend and Node.js/Express for the backend, ensuring a seamless user experience.",
+  "Integrated OpenAI's GPT API to provide personalized financial advice and smart budgeting tips based on user data.",
+  "Implemented secure user authentication and data storage with JWT and MongoDB.",
+  "Designed interactive dashboards and visualizations for expense tracking and financial goal setting.",
+  "Added features for categorizing expenses, setting budgets, and generating monthly financial reports.",
+],
+    href: "youtube.com",
+    logo: "sddsadsad",
+    image: "/assets/projects/budget.jpg",
     tags: [
       {
         id: 1,
-        name: "C#",
-        path: "/assets/logos/csharp.svg",
+        name: "Express JS",
+        path: "/assets/logos/express.svg",
       },
       {
         id: 2,
-        name: ".Net",
-        path: "/assets/logos/dotnet.svg",
+        name: "React Js",
+        path: "/assets/logos/react.svg",
       },
       {
         id: 3,
-        name: "Ef Core",
-        path: "/assets/logos/efcore.png",
+        name: "Next Js",
+        path: "/assets/logos/next.svg",
       },
       {
         id: 4,
@@ -38,23 +39,23 @@ export const myProjects = [
   },
   {
     id: 2,
-    title: "Authentication & Authorization System",
-    description:
-      "A secure authentication and authorization system using Auth0 for seamless user management.",
+    title: "Hospital Management System Microservices",
+    description: "A comprehensive hospital management system designed to streamline administrative, clinical, and financial operations within healthcare facilities.",
+
     subDescription: [
-      "Integrated Auth0 for authentication, supporting OAuth, JWT, and multi-factor authentication.",
-      "Implemented role-based access control (RBAC) for fine-grained user permissions.",
-      "Developed a React-based frontend with Tailwind CSS for a sleek user experience.",
-      "Connected to a secure SQLite database for user data storage.",
-    ],
-    href: "",
+  "Developed a full-stack web application using Spring Boot for the backend and React for the frontend, ensuring efficient management of hospital workflows.",
+  "Implemented secure authentication and role-based access control for doctors, nurses, patients, and administrators.",
+  "Integrated modules for patient registration, appointment scheduling, medical records, billing, and inventory management.",
+  "Enabled real-time notifications and reporting features to support decision-making and improve patient care.",
+],
+    href: "https://github.com/teguh-zet/hospital-management-system.git",
     logo: "",
-    image: "/assets/projects/auth-system.jpg",
+    image: "/assets/projects/hms.jpg",
     tags: [
       {
         id: 1,
-        name: "Auth0",
-        path: "/assets/logos/auth0.svg",
+        name: "Java",
+        path: "/assets/logos/java.svg",
       },
       {
         id: 2,
@@ -63,164 +64,51 @@ export const myProjects = [
       },
       {
         id: 3,
-        name: "SQLite",
-        path: "/assets/logos/sqlite.svg",
+        name: "Spring Boot",
+        path: "/assets/logos/spring-boot.svg",
       },
       {
         id: 4,
-        name: "TailwindCSS",
-        path: "/assets/logos/tailwindcss.svg",
+        name: "Bootstrap",
+        path: "/assets/logos/bootstrap.svg",
       },
     ],
   },
   {
     id: 3,
-    title: "Blazor Web App",
-    description:
-      "A modern, interactive web application built with Blazor WebAssembly and .NET Core.",
+    title: "Teaz Auto",
+    
+    description: "A modern automotive service management platform designed to simplify workshop operations, customer bookings, and vehicle maintenance tracking.",
+
     subDescription: [
-      "Developed a fully interactive Single Page Application (SPA) using Blazor WebAssembly.",
-      "Implemented API interactions using .NET Core for a robust backend.",
-      "Designed responsive UI components with Tailwind CSS for an enhanced UX.",
-      "Integrated SQLite for efficient client-side database storage.",
-    ],
-    href: "",
+  "Built a robust web application using Spring Boot for the backend and Thymeleaf for the frontend, ensuring a responsive and user-friendly interface.",
+  "Implemented features for customer registration",
+  "Integrated a comprehensive dashboard for workshop staff to manage appointments, inventory, and service history.",
+  "Designed responsive and intuitive user interfaces with  CSS to enhance user experience across devices.",
+],
+    href: "https://github.com/teguh-zet/teazauto.git",
     logo: "",
-    image: "/assets/projects/blazor-app.jpg",
+    image: "/assets/projects/teazauto.png",
     tags: [
       {
         id: 1,
-        name: "Blazor",
-        path: "/assets/logos/blazor.svg",
+        name: "Java",
+        path: "/assets/logos/java.svg",
       },
       {
         id: 2,
-        name: ".NET Core",
-        path: "/assets/logos/dotnetcore.svg",
+        name: "Spring Boot",
+        path: "/assets/logos/spring-boot.svg",
       },
       {
         id: 3,
-        name: "SQLite",
-        path: "/assets/logos/sqlite.svg",
+        name: "thymeleaf",
+        path: "/assets/logos/thymeleaf.svg",
       },
-      {
-        id: 4,
-        name: "TailwindCSS",
-        path: "/assets/logos/tailwindcss.svg",
-      },
+      
     ],
-  },
-  {
-    id: 4,
-    title: "C++ Game Engine",
-    description:
-      "A lightweight C++ game engine designed for 2D and 3D game development.",
-    subDescription: [
-      "Built a powerful rendering engine using OpenGL and C++.",
-      "Developed a physics engine with collision detection and particle effects.",
-      "Implemented a scripting system for easy game customization.",
-      "Optimized performance with multi-threading and efficient memory management.",
-    ],
-    href: "",
-    logo: "",
-    image: "/assets/projects/game-engine.jpg",
-    tags: [
-      {
-        id: 1,
-        name: "C++",
-        path: "/assets/logos/cplusplus.svg",
-      },
-      {
-        id: 2,
-        name: "C#",
-        path: "/assets/logos/csharp.svg",
-      },
-      {
-        id: 3,
-        name: "Git",
-        path: "/assets/logos/git.svg",
-      },
-      {
-        id: 4,
-        name: "Microsoft",
-        path: "/assets/logos/microsoft.svg",
-      },
-    ],
-  },
-  {
-    id: 5,
-    title: "WordPress Custom Theme",
-    description:
-      "A fully customizable WordPress theme optimized for performance and SEO.",
-    subDescription: [
-      "Developed a responsive WordPress theme using HTML5, CSS3, and JavaScript.",
-      "Integrated Tailwind CSS for modern styling and UI enhancements.",
-      "Optimized SEO and page speed using Vite.js for fast builds.",
-      "Implemented custom widgets and plugin compatibility for extended functionality.",
-    ],
-    href: "",
-    logo: "",
-    image: "/assets/projects/wordpress-theme.jpg",
-    tags: [
-      {
-        id: 1,
-        name: "WordPress",
-        path: "/assets/logos/wordpress.svg",
-      },
-      {
-        id: 2,
-        name: "HTML5",
-        path: "/assets/logos/html5.svg",
-      },
-      {
-        id: 3,
-        name: "CSS3",
-        path: "/assets/logos/css3.svg",
-      },
-      {
-        id: 4,
-        name: "Vite.js",
-        path: "/assets/logos/vitejs.svg",
-      },
-    ],
-  },
-  {
-    id: 6,
-    title: "Online Learning Platform",
-    description:
-      "A web application that allows users to enroll in courses, watch video lectures, and take quizzes.",
-    subDescription: [
-      "Built using Blazor WebAssembly for a seamless SPA experience.",
-      "Implemented video streaming with Azure Media Services.",
-      "Added a quiz system with dynamic question generation and real-time grading.",
-      "Integrated Stripe API for secure payment processing.",
-    ],
-    href: "",
-    logo: "",
-    image: "/assets/projects/elearning.jpg",
-    tags: [
-      {
-        id: 1,
-        name: "Blazor",
-        path: "/assets/logos/blazor.svg",
-      },
-      {
-        id: 2,
-        name: "Azure",
-        path: "/assets/logos/azure.svg",
-      },
-      {
-        id: 3,
-        name: "Stripe",
-        path: "/assets/logos/stripe.svg",
-      },
-      {
-        id: 4,
-        name: "TailwindCSS",
-        path: "/assets/logos/tailwindcss.svg",
-      },
-    ],
-  },
+  }
+ 
 ];
 
 export const mySocials = [
@@ -231,12 +119,12 @@ export const mySocials = [
   },
   {
     name: "Linkedin",
-    href: "https://www.linkedin.com/in/ali-sanati/",
+    href: "https://www.linkedin.com/in/teguh-ahmadi-zebua-181b47315?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     icon: "/assets/socials/linkedIn.svg",
   },
   {
     name: "Instagram",
-    href: "https://www.instagram.com/ali.sanatidev/reels/",
+    href: "https://www.instagram.com/teguhahmadizebua?igsh=MTJkc2ZvYXA0aXRscw==",
     icon: "/assets/socials/instagram.svg",
   },
 ];
