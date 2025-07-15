@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import Card from "../components/Card.jsx";
-import { Globe } from "../components/globe";
+import { Globe } from "../components/Globe.jsx";
 import CopyEmailButton from "../components/CopyEmailButton.jsx";
 import { Frameworks } from "../components/Frameworks.jsx";
 
