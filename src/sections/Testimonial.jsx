@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
-import Marquee from "../components/Marquee";
-import { reviews } from "../constants";
+import Marquee from "../components/Marquee.jsx";
+import { reviews } from "../constants/Index.js";
 const firstRow = reviews.slice(0, reviews.length / 2);
 const secondRow = reviews.slice(reviews.length / 2);
 
