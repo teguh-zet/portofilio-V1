@@ -164,53 +164,103 @@ export const experiences = [
     ],
   },
 ];
-export const reviews = [
+// export const reviews = [
+//   {
+//     name: "Jack",
+//     username: "@jack",
+//     body: "I've never seen anything like this before. It's amazing. I love it.",
+//     img: "https://robohash.org/jack",
+//   },
+//   {
+//     name: "Jill",
+//     username: "@jill",
+//     body: "I don't know what to say. I'm speechless. This is amazing.",
+//     img: "https://robohash.org/jill",
+//   },
+//   {
+//     name: "John",
+//     username: "@john",
+//     body: "I'm at a loss for words. This is amazing. I love it.",
+//     img: "https://robohash.org/john",
+//   },
+//   {
+//     name: "Alice",
+//     username: "@alice",
+//     body: "This is hands down the best thing I've experienced. Highly recommend!",
+//     img: "https://robohash.org/alice",
+//   },
+//   {
+//     name: "Bob",
+//     username: "@bob",
+//     body: "Incredible work! The attention to detail is phenomenal.",
+//     img: "https://robohash.org/bob",
+//   },
+//   {
+//     name: "Charlie",
+//     username: "@charlie",
+//     body: "This exceeded all my expectations. Absolutely stunning!",
+//     img: "https://robohash.org/charlie",
+//   },
+//   {
+//     name: "Dave",
+//     username: "@dave",
+//     body: "Simply breathtaking. The best decision I've made in a while.",
+//     img: "https://robohash.org/dave",
+//   },
+//   {
+//     name: "Eve",
+//     username: "@eve",
+//     body: "So glad I found this. It has changed the game for me.",
+//     img: "https://robohash.org/eve",
+//   },
+// ];
+export const certificates = [
   {
-    name: "Jack",
-    username: "@jack",
-    body: "I've never seen anything like this before. It's amazing. I love it.",
-    img: "https://robohash.org/jack",
+    title: "Web Programming Training (HTML, CSS, JavaScript)",
+    issuer: "Dicoding Indonesia",
+    // Ganti dengan path gambar sertifikat Anda di folder public
+    img: "https://res.cloudinary.com/dlk54lcoe/image/upload/v1757497756/web_programming__page-0001_zycogu.jpg",
   },
   {
-    name: "Jill",
-    username: "@jill",
-    body: "I don't know what to say. I'm speechless. This is amazing.",
-    img: "https://robohash.org/jill",
+    title: "React Training",
+    issuer: "Dicoding Indonesia",
+    img: "https://res.cloudinary.com/dlk54lcoe/image/upload/v1757497191/react_page-0001_vae3o6.jpg",
   },
   {
-    name: "John",
-    username: "@john",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://robohash.org/john",
+    title: "Java Advanced Backend Developer REST API",
+    issuer: "Amazon Web Services (AWS)",
+    img: "https://res.cloudinary.com/dlk54lcoe/image/upload/v1757497190/java-advc_so700q.jpg",
   },
   {
-    name: "Alice",
-    username: "@alice",
-    body: "This is hands down the best thing I've experienced. Highly recommend!",
-    img: "https://robohash.org/alice",
+    title: "Java Fundamental Backend Developer MVC",
+    issuer: "freeCodeCamp",
+    img: "https://res.cloudinary.com/dlk54lcoe/image/upload/v1757497190/java-fund_mw3a5k.jpg",
   },
   {
-    name: "Bob",
-    username: "@bob",
-    body: "Incredible work! The attention to detail is phenomenal.",
-    img: "https://robohash.org/bob",
+    title: "Java Fundamental Instructor",
+    issuer: "freeCodeCamp",
+    img: "https://res.cloudinary.com/dlk54lcoe/image/upload/v1757497191/instruktur_page-0001_ghkvpk.jpg",
   },
   {
-    name: "Charlie",
-    username: "@charlie",
-    body: "This exceeded all my expectations. Absolutely stunning!",
-    img: "https://robohash.org/charlie",
+    title: "English Language Training",
+    issuer: "Progate",
+    img: "https://res.cloudinary.com/dlk54lcoe/image/upload/v1757497191/english_serti_page-0001_hyslqh.jpg",
   },
   {
-    name: "Dave",
-    username: "@dave",
-    body: "Simply breathtaking. The best decision I've made in a while.",
-    img: "https://robohash.org/dave",
+    title: "Github Fundamental Training",
+    issuer: "Progate",
+    img: "https://res.cloudinary.com/dlk54lcoe/image/upload/v1757497191/github_sertifikat__page-0001_sdmkvk.jpg",
   },
   {
-    name: "Eve",
-    username: "@eve",
-    body: "So glad I found this. It has changed the game for me.",
-    img: "https://robohash.org/eve",
+    title: "Database Programming Training (MySQL)",
+    issuer: "Progate",
+    img: "https://res.cloudinary.com/dlk54lcoe/image/upload/v1757497190/database_page-0001_ew0w0o.jpg",
   },
+  {
+    title: "Data Structure Training (C Programming)",
+    issuer: "Progate",
+    img: "https://res.cloudinary.com/dlk54lcoe/image/upload/v1757497190/data_struktur_page-0001_fbbboq.jpg",
+  },
+ 
+  // Tambahkan sertifikat lainnya di sini...
 ];
