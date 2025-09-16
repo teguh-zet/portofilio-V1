@@ -262,5 +262,4 @@ export const certificates = [
     img: "https://res.cloudinary.com/dlk54lcoe/image/upload/v1757497190/data_struktur_page-0001_fbbboq.jpg",
   },
  
-  // Tambahkan sertifikat lainnya di sini...
 ];

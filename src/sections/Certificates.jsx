@@ -86,7 +86,7 @@ export default function Certificates() {
   };
 
   return (
-    <div className="items-start mt-25 md:mt-35 c-space">
+    <div className="items-start mt-25 md:mt-35 c-space" id="certificate">
       <h2 className="text-heading">Sertifikat & Pelatihan</h2>
       <div className="relative flex flex-col items-center justify-center w-full mt-12 overflow-hidden gap-y-4">
         <Marquee pauseOnHover className="[--duration:40s]">
