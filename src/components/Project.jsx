@@ -93,7 +93,7 @@ const Project = ({
               >
                 {title}
               </motion.h3>
-               from-lavender to-royal hover-animation
+               
               {/* Tags Container */}
               <div className="flex flex-wrap gap-2 sm:gap-3 md:gap-4">
                 {tags.map((tag, index) => (

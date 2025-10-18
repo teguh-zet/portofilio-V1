@@ -1,24 +1,24 @@
 export const myProjects = [
   {
     id: 1,
-    title: "Budget Tracker & AI Financial Advice ",
-    description: "An AI-powered financial advisor and budget tracker that helps users manage their personal finances, track expenses, and receive intelligent recommendations for better money management.",
+    title: "PUB Scholarship Web Portal",
+    description: "This is the official website for the PUB Scholarship Program offered by Universitas Nasional PASIM (PASIM National University), located in Bandung, Indonesia.",
 
     subDescription: [
-  "Developed a full-stack application using React for the frontend and Node.js/Express for the backend, ensuring a seamless user experience.",
-  "Integrated OpenAI's GPT API to provide personalized financial advice and smart budgeting tips based on user data.",
-  "Implemented secure user authentication and data storage with JWT and MongoDB.",
-  "Designed interactive dashboards and visualizations for expense tracking and financial goal setting.",
-  "Added features for categorizing expenses, setting budgets, and generating monthly financial reports.",
+  "Designed and developed a responsive web portal for the Universitas Nasional PASIM scholarship program, ensuring accessibility across all devices.",
+  "Engineered a multi-step registration form for applicants, featuring real-time validation and document upload capabilities to streamline the application process.",
+  "Built a secure backend using Node.js/Express [atau PHP/Laravel] to manage applicant data, process applications, and handle user authentication with JWT.",
+  "Developed a dedicated admin dashboard for staff to review applications, filter candidates based on specific criteria, and manage scholarship statuses.",
+  "Integrated a notification system (e.g., email or on-site alerts) to keep applicants informed about their application status updates."
 ],
-    href: "youtube.com",
+    href: "https://new.pubpasim.org/id",
     logo: "sddsadsad",
-    image: "/assets/projects/budget.jpg",
+    image: "/assets/projects/PROJECT_PUB.png",
     tags: [
       {
         id: 1,
         name: "Express JS",
-        path: "/assets/logos/express.svg",
+        path: "/assets/logos/slider-ex.png",
       },
       {
         id: 2,
@@ -39,6 +39,44 @@ export const myProjects = [
   },
   {
     id: 2,
+    title: "Budget Tracker & AI Financial Advice ",
+    description: "An AI-powered financial advisor and budget tracker that helps users manage their personal finances, track expenses, and receive intelligent recommendations for better money management.",
+
+    subDescription: [
+  "Developed a full-stack application using React for the frontend and Node.js/Express for the backend, ensuring a seamless user experience.",
+  "Integrated OpenAI's GPT API to provide personalized financial advice and smart budgeting tips based on user data.",
+  "Implemented secure user authentication and data storage with JWT and MongoDB.",
+  "Designed interactive dashboards and visualizations for expense tracking and financial goal setting.",
+  "Added features for categorizing expenses, setting budgets, and generating monthly financial reports.",
+  ],
+    href: "https://github.com/teguh-zet/BudgetTraker-AiFinancialAdvisor.git",
+    logo: "sddsadsad",
+    image: "/assets/projects/budget.jpg",
+    tags: [
+      {
+        id: 1,
+        name: "Express JS",
+        path: "/assets/logos/slider-ex.png",
+      },
+      {
+        id: 2,
+        name: "React Js",
+        path: "/assets/logos/react.svg",
+      },
+      {
+        id: 3,
+        name: "Next Js",
+        path: "/assets/logos/next.svg",
+      },
+      {
+        id: 4,
+        name: "TailwindCSS",
+        path: "/assets/logos/tailwindcss.svg",
+      },
+    ],
+  },
+  {
+    id: 3,
     title: "Hospital Management System Microservices",
     description: "A comprehensive hospital management system designed to streamline administrative, clinical, and financial operations within healthcare facilities.",
 
@@ -75,7 +113,7 @@ export const myProjects = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     title: "Teaz Auto",
     
     description: "A modern automotive service management platform designed to simplify workshop operations, customer bookings, and vehicle maintenance tracking.",
