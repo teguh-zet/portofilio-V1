@@ -40,11 +40,13 @@ const CertificateModal = ({ certificate, onClose }) => {
           </svg>
         </button>
         {/* Gambar Sertifikat Ukuran Penuh */}
-        <img
-          src={certificate.img}
-          alt={`Sertifikat: ${certificate.title}`}
-          className="object-contain w-full h-full max-h-[85vh] rounded-lg"
-        />
+        <div className="relative w-full max-h-[85vh] overflow-auto">
+          <img
+            src={certificate.img}
+            alt={`Sertifikat: ${certificate.title}`}
+            className="object-contain w-full h-auto rounded-lg"
+          />
+        </div>
       </div>
     </div>
   );
@@ -56,16 +58,19 @@ const CertificateCard = ({ img, title, onClick }) => {
     <figure
       onClick={onClick} // 2. Menambahkan event handler onClick
       className={twMerge(
-        "relative w-80 cursor-pointer overflow-hidden rounded-xl border p-2 border-gray-50/[.1] bg-gradient-to-r bg-indigo to-storm hover:bg-royal hover-animation"
+        "relative w-72 sm:w-80 cursor-pointer overflow-hidden rounded-xl border p-2 border-gray-50/[.1] bg-gradient-to-r from-indigo to-storm hover:from-royal hover:to-royal/80 hover-animation flex-shrink-0 transition-all duration-300 shadow-lg hover:shadow-xl"
       )}
     >
-      <img
-        className="object-cover w-full h-auto rounded-lg"
-        alt={`Certificate for ${title}`}
-        src={img}
-      />
-      <figcaption className="absolute bottom-0 left-0 w-full p-3 text-sm font-medium text-center text-white bg-black/40 backdrop-blur-sm">
-        {title}
+      <div className="relative w-full aspect-[3/4] bg-storm rounded-lg overflow-hidden">
+        <img
+          className="object-contain w-full h-full rounded-lg"
+          alt={`Certificate for ${title}`}
+          src={img}
+          loading="lazy"
+        />
+      </div>
+      <figcaption className="absolute bottom-0 left-0 right-0 p-2 sm:p-3 text-xs sm:text-sm font-medium text-center text-white bg-gradient-to-t from-black/80 via-black/60 to-transparent backdrop-blur-sm rounded-b-lg">
+        <span className="line-clamp-2">{title}</span>
       </figcaption>
     </figure>
   );
@@ -87,31 +92,43 @@ export default function Certificates() {
 
   return (
     <div className="items-start mt-25 md:mt-35 c-space" id="certificate">
-      <h2 className="text-heading">Sertifikat & Pelatihan</h2>
-      <div className="relative flex flex-col items-center justify-center w-full mt-12 overflow-hidden gap-y-4">
-        <Marquee pauseOnHover className="[--duration:40s]">
-          {firstRow.map((cert) => (
-            <CertificateCard
-              key={cert.title}
-              {...cert}
-              // Mengirim fungsi handle click ke setiap kartu
-              onClick={() => handleCardClick(cert)}
-            />
-          ))}
-        </Marquee>
+      <h2 className="text-heading text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8">Sertifikat & Pelatihan</h2>
+      
+      {/* Container dengan scroll horizontal manual */}
+      <div className="relative w-full mt-12">
+        {/* Scrollable container untuk row pertama */}
+        <div className="relative mb-6 overflow-x-auto overflow-y-hidden pb-4 scroll-smooth scrollbar-hide" style={{ WebkitOverflowScrolling: 'touch' }}>
+          <div className="flex gap-4 sm:gap-5 md:gap-6 px-4 md:px-0" style={{ width: 'max-content' }}>
+            {firstRow.map((cert) => (
+              <div key={cert.title} className="flex-shrink-0">
+                <CertificateCard
+                  {...cert}
+                  onClick={() => handleCardClick(cert)}
+                />
+              </div>
+            ))}
+          </div>
+          {/* Gradient overlay untuk efek fade */}
+          <div className="absolute inset-y-0 left-0 w-24 md:w-32 pointer-events-none bg-gradient-to-r from-primary via-primary/50 to-transparent"></div>
+          <div className="absolute inset-y-0 right-0 w-24 md:w-32 pointer-events-none bg-gradient-to-l from-primary via-primary/50 to-transparent"></div>
+        </div>
 
-        <Marquee reverse pauseOnHover className="[--duration:40s]">
-          {secondRow.map((cert) => (
-            <CertificateCard
-              key={cert.title}
-              {...cert}
-              onClick={() => handleCardClick(cert)}
-            />
-          ))}
-        </Marquee>
-
-        <div className="absolute inset-y-0 left-0 w-1/4 pointer-events-none bg-gradient-to-r from-primary"></div>
-        <div className="absolute inset-y-0 right-0 w-1/4 pointer-events-none bg-gradient-to-l from-primary"></div>
+        {/* Scrollable container untuk row kedua */}
+        <div className="relative overflow-x-auto overflow-y-hidden pb-4 scroll-smooth scrollbar-hide" style={{ WebkitOverflowScrolling: 'touch' }}>
+          <div className="flex gap-4 sm:gap-5 md:gap-6 px-4 md:px-0" style={{ width: 'max-content' }}>
+            {secondRow.map((cert) => (
+              <div key={cert.title} className="flex-shrink-0">
+                <CertificateCard
+                  {...cert}
+                  onClick={() => handleCardClick(cert)}
+                />
+              </div>
+            ))}
+          </div>
+          {/* Gradient overlay untuk efek fade */}
+          <div className="absolute inset-y-0 left-0 w-24 md:w-32 pointer-events-none bg-gradient-to-r from-primary via-primary/50 to-transparent"></div>
+          <div className="absolute inset-y-0 right-0 w-24 md:w-32 pointer-events-none bg-gradient-to-l from-primary via-primary/50 to-transparent"></div>
+        </div>
       </div>
 
       {/* 4. Menampilkan modal jika ada sertifikat yang dipilih */}
