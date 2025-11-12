@@ -7,7 +7,6 @@ export const myProjects = [
     subDescription: [
   "Designed and developed a responsive web portal for the Universitas Nasional PASIM scholarship program, ensuring accessibility across all devices.",
   "Engineered a multi-step registration form for applicants, featuring real-time validation and document upload capabilities to streamline the application process.",
-  "Built a secure backend using Node.js/Express [atau PHP/Laravel] to manage applicant data, process applications, and handle user authentication with JWT.",
   "Developed a dedicated admin dashboard for staff to review applications, filter candidates based on specific criteria, and manage scholarship statuses.",
   "Integrated a notification system (e.g., email or on-site alerts) to keep applicants informed about their application status updates."
 ],

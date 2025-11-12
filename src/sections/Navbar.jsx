@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navigation = ({ isMobile = false, onItemClick = () => {} }) => {
@@ -11,15 +11,15 @@ const Navigation = ({ isMobile = false, onItemClick = () => {} }) => {
   ];
 
   return (
-    <ul className={`flex ${isMobile ? 'flex-col gap-6 py-6' : 'items-center gap-8 sm:gap-10 md:gap-12'}`}>
+    <ul className={`flex ${isMobile ? 'flex-col gap-4 py-4' : 'items-center gap-8 sm:gap-10 md:gap-12'}`}>
       {navItems.map((item, index) => (
         <motion.li
           key={item.name}
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={isMobile ? { opacity: 0, x: -20 } : { opacity: 0, y: -10 }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
           transition={{ 
-            duration: 0.5, 
-            delay: isMobile ? index * 0.1 : 0,
+            duration: 0.3, 
+            delay: isMobile ? index * 0.05 : 0,
             ease: "easeOut"
           }}
         >
@@ -29,16 +29,19 @@ const Navigation = ({ isMobile = false, onItemClick = () => {} }) => {
               e.preventDefault();
               const target = document.querySelector(item.href);
               if (target) {
+                const offset = 80;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
                 window.scrollTo({
-                  top: target.offsetTop - 80,
+                  top: offsetPosition,
                   behavior: 'smooth'
                 });
               }
               onItemClick();
             }}
             className={`block text-sm sm:text-base font-medium transition-all duration-300
-                     text-neutral-400 hover:text-white hover:scale-105
-                     ${isMobile ? 'py-3 px-6 rounded-lg hover:bg-white/10' : ''}`}
+                     text-neutral-400 hover:text-white
+                     ${isMobile ? 'py-3 px-4 rounded-lg hover:bg-white/10 active:bg-white/20 w-full text-left' : 'hover:scale-105'}`}
           >
             {item.name}
           </a>
@@ -60,65 +63,112 @@ const Navbar = () => {
     setIsOpen(false);
   };
 
+  // Prevent body scroll saat menu mobile terbuka
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
+  // Tutup menu saat resize ke desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 640 && isOpen) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isOpen]);
+
   return (
-    <div className="fixed inset-x-0 top-0 z-50 w-full backdrop-blur-lg bg-primary/40 border-b border-white/10">
-      <div className="mx-auto c-space max-w-7xl">
-        <div className="flex items-center justify-between py-3 sm:py-4">
-          {/* Logo */}
-          <motion.a
-            href="/"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            className="text-xl font-bold transition-colors text-neutral-400 hover:text-white"
-            whileHover={{ scale: 1.05 }}
-          >
-            teguh zeyt
-          </motion.a>
+    <>
+      <div className="fixed inset-x-0 top-0 z-50 w-full backdrop-blur-lg bg-primary/40 border-b border-white/10">
+        <div className="mx-auto c-space max-w-7xl">
+          <div className="flex items-center justify-between py-3 sm:py-4">
+            {/* Logo */}
+            <motion.a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                closeMenu();
+              }}
+              className="text-xl font-bold transition-colors text-neutral-400 hover:text-white z-10"
+              whileHover={{ scale: 1.05 }}
+            >
+              teguh zeyt
+            </motion.a>
 
-          {/* Hanya Tampilkan Hamburger Button di Mobile */}
-          <button
-            onClick={toggleMenu}
-            className="sm:hidden flex cursor-pointer text-neutral-400 hover:text-white 
-                       focus:outline-none focus:ring-2 focus:ring-white/50 rounded-lg p-2 transition-colors"
-            aria-expanded={isOpen}
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-          >
-            <motion.img
-              src={isOpen ? "assets/close.svg" : "assets/menu.svg"}
-              className="w-6 h-6"
-              alt="menu toggle"
-              animate={{ rotate: isOpen ? 180 : 0 }}
-              transition={{ duration: 0.3 }}
-            />
-          </button>
+            {/* Hanya Tampilkan Hamburger Button di Mobile */}
+            <button
+              onClick={toggleMenu}
+              className="sm:hidden flex items-center justify-center cursor-pointer text-neutral-400 hover:text-white 
+                         focus:outline-none focus:ring-2 focus:ring-white/50 rounded-lg p-2 transition-colors z-10
+                         relative w-10 h-10"
+              aria-expanded={isOpen}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+            >
+              <motion.div
+                className="absolute inset-0 flex items-center justify-center"
+                animate={{ rotate: isOpen ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                {isOpen ? (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                ) : (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                )}
+              </motion.div>
+            </button>
 
-          {/* Hanya Tampilkan Navigasi Desktop di Layar >= 640px (sm) */}
-          <nav className="hidden sm:flex">
-            <Navigation onItemClick={closeMenu} />
-          </nav>
+            {/* Hanya Tampilkan Navigasi Desktop di Layar >= 640px (sm) */}
+            <nav className="hidden sm:flex">
+              <Navigation onItemClick={closeMenu} />
+            </nav>
+          </div>
         </div>
-      </div>
 
-      {/* Mobile Menu: Hanya Muncul di Mobile Saat Dibuka */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            className="sm:hidden bg-primary/70 backdrop-blur-md"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            style={{ overflow: "hidden" }}
-          >
-            <div className="container mx-auto px-6">
-              <Navigation isMobile={true} onItemClick={closeMenu} />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+        {/* Mobile Menu: Hanya Muncul di Mobile Saat Dibuka */}
+        <AnimatePresence>
+          {isOpen && (
+            <>
+              {/* Backdrop Overlay */}
+              <motion.div
+                className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 sm:hidden"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                onClick={closeMenu}
+              />
+              
+              {/* Mobile Menu Content */}
+              <motion.div
+                className="sm:hidden bg-primary/95 backdrop-blur-md border-t border-white/10 relative z-50"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                <div className="c-space py-4">
+                  <Navigation isMobile={true} onItemClick={closeMenu} />
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
+      </div>
+    </>
   );
 };
 
