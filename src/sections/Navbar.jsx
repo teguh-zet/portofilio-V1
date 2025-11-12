@@ -27,17 +27,58 @@ const Navigation = ({ isMobile = false, onItemClick = () => {} }) => {
             href={item.href}
             onClick={(e) => {
               e.preventDefault();
-              const target = document.querySelector(item.href);
-              if (target) {
-                const offset = 80;
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - offset;
-                window.scrollTo({
-                  top: offsetPosition,
-                  behavior: 'smooth'
-                });
+              
+              // Fungsi untuk scroll ke target
+              const scrollToTarget = () => {
+                // Unlock body scroll jika masih locked
+                document.body.style.overflow = 'unset';
+                
+                // Coba beberapa cara untuk menemukan target
+                const targetId = item.href.replace('#', '');
+                let target = document.getElementById(targetId);
+                
+                // Jika tidak ditemukan dengan getElementById, coba querySelector
+                if (!target) {
+                  target = document.querySelector(item.href);
+                }
+                
+                // Jika masih tidak ditemukan, coba dengan querySelector yang lebih spesifik
+                if (!target) {
+                  target = document.querySelector(`[id="${targetId}"]`);
+                }
+                
+                if (target) {
+                  const navbarHeight = 80;
+                  
+                  // Gunakan requestAnimationFrame untuk memastikan DOM sudah siap
+                  requestAnimationFrame(() => {
+                    const targetRect = target.getBoundingClientRect();
+                    const targetPosition = targetRect.top + window.pageYOffset;
+                    const offsetPosition = targetPosition - navbarHeight;
+                    
+                    window.scrollTo({
+                      top: Math.max(0, offsetPosition),
+                      behavior: 'smooth'
+                    });
+                  });
+                } else {
+                  console.warn(`Target not found: ${item.href} (ID: ${targetId})`);
+                  // Fallback: scroll ke top jika target tidak ditemukan
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              };
+              
+              // Jika mobile, tutup menu dulu lalu scroll
+              if (isMobile) {
+                onItemClick();
+                // Tunggu menu tertutup dan body scroll di-unlock
+                setTimeout(() => {
+                  scrollToTarget();
+                }, 150);
+              } else {
+                // Desktop langsung scroll
+                scrollToTarget();
               }
-              onItemClick();
             }}
             className={`block text-sm sm:text-base font-medium transition-all duration-300
                      text-neutral-400 hover:text-white
