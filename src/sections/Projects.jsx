@@ -2,6 +2,7 @@ import { useState } from "react";
 import Project from "../components/Project.jsx";
 import { myProjects } from "../constants/Index.js";
 import { motion, useMotionValue, useSpring } from "motion/react";
+
 const Projects = () => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -18,8 +19,13 @@ const Projects = () => {
       className="relative c-space section-spacing"
       id="projects"
     >
-      <h2 className="text-heading">My Selected Projects</h2>
-      <div className="bg-gradient-to-r from-transparent via-neutral-700 to-transparent mt-12 h-[1px] w-full" />
+      <h2 className="text-heading text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4">
+        <span className="gradient-text">My Selected Projects</span>
+      </h2>
+      <p className="text-center text-neutral-400 text-sm md:text-base max-w-2xl mx-auto mb-8">
+        A collection of projects that showcase my passion for building impactful digital solutions.
+      </p>
+      <div className="section-divider mb-12" />
       {myProjects.map((project) => (
         <Project key={project.id} {...project} setPreview={setPreview} />
       ))}

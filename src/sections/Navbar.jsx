@@ -5,6 +5,7 @@ const Navigation = ({ isMobile = false, onItemClick = () => {} }) => {
   const navItems = [
     { name: "Home", href: "#home" },
     { name: "About", href: "#aboute" },
+    { name: "Experience", href: "#experience" },
     { name: "Projects", href: "#projects" },
     { name: "Certificate", href: "#certificate" },
     { name: "Contact", href: "#contact" },
@@ -143,7 +144,7 @@ const Navbar = () => {
               className="text-xl font-bold transition-colors text-neutral-400 hover:text-white z-10"
               whileHover={{ scale: 1.05 }}
             >
-              teguh zeyt
+              teguh-zet
             </motion.a>
 
             {/* Hanya Tampilkan Hamburger Button di Mobile */}

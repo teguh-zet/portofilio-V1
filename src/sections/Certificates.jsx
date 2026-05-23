@@ -92,7 +92,13 @@ export default function Certificates() {
 
   return (
     <div className="items-start mt-25 md:mt-35 c-space" id="certificate">
-      <h2 className="text-heading text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8">Sertifikat & Pelatihan</h2>
+      <h2 className="text-heading text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4">
+        <span className="gradient-text">Sertifikat & Pelatihan</span>
+      </h2>
+      <p className="text-center text-neutral-400 text-sm md:text-base max-w-2xl mx-auto mb-8">
+        Certifications and training that strengthen my expertise.
+      </p>
+      <div className="section-divider mb-8" />
       
       {/* Container dengan scroll horizontal manual */}
       <div className="relative w-full mt-12">
@@ -108,9 +114,7 @@ export default function Certificates() {
               </div>
             ))}
           </div>
-          {/* Gradient overlay untuk efek fade */}
-          <div className="absolute inset-y-0 left-0 w-24 md:w-32 pointer-events-none bg-gradient-to-r from-primary via-primary/50 to-transparent"></div>
-          <div className="absolute inset-y-0 right-0 w-24 md:w-32 pointer-events-none bg-gradient-to-l from-primary via-primary/50 to-transparent"></div>
+
         </div>
 
         {/* Scrollable container untuk row kedua */}
@@ -125,9 +129,7 @@ export default function Certificates() {
               </div>
             ))}
           </div>
-          {/* Gradient overlay untuk efek fade */}
-          <div className="absolute inset-y-0 left-0 w-24 md:w-32 pointer-events-none bg-gradient-to-r from-primary via-primary/50 to-transparent"></div>
-          <div className="absolute inset-y-0 right-0 w-24 md:w-32 pointer-events-none bg-gradient-to-l from-primary via-primary/50 to-transparent"></div>
+
         </div>
       </div>
 

@@ -1,77 +1,86 @@
 
 import { useRef, useState } from "react";
-import Card from "../components/Card.jsx";
+import { motion } from "motion/react";
 import { Globe } from "../components/Globe.jsx";
 import CopyEmailButton from "../components/CopyEmailButton.jsx";
 import { Frameworks } from "../components/Frameworks.jsx";
-import GridItem from "../components/GridItem.jsx"; // 1. Impor komponen baru
+import GridItem from "../components/GridItem.jsx";
 
 const About = () => {
-  const grid2Container = useRef();
   const [isProfileActive, setProfileActive] = useState(false);
 
   return (
     <section className="c-space section-spacing" id="aboute">
-      <h2 className="text-heading text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8">
-        About Me
-      </h2>
-      
+      <motion.h2
+        className="text-heading text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <span className="gradient-text">About Me</span>
+      </motion.h2>
+      <p className="text-center text-neutral-400 text-sm md:text-base max-w-2xl mx-auto mb-8">
+        Get to know me, my skills, and what drives my passion for technology.
+      </p>
+      <div className="section-divider mb-8" />
+
       <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem] mt-8 md:mt-12 px-4 md:px-0">
-        
-        {/* Grid 1: Profile Card (lebih aksesibel dengan tag <button>) - Memanjang Vertikal */}
+
+        {/* Grid 1: Profile Card */}
         <GridItem
-          as="button" // 2. Menggunakan 'button' untuk aksesibilitas dan semantik yang lebih baik
+          as="button"
           onClick={() => setProfileActive(!isProfileActive)}
           className="group grid-default-color col-span-1 md:col-span-2 md:row-span-2 min-h-[20rem] sm:min-h-[22rem] md:min-h-0 text-left"
         >
-          <img 
-            src="assets/foto.jpg" 
+          <img
+            src="assets/foto.jpg"
             className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:grayscale-0 group-hover:scale-110 ${
               isProfileActive ? "!grayscale-0 !scale-110" : "grayscale"
             }`}
             alt="Teguh Ahmadi Zebua"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-          
-          <div className={`relative z-10 p-4 sm:p-6 transition-all duration-300 transform ${
+
+          <div className={`relative z-10 flex flex-col justify-end h-full p-4 sm:p-6 transition-all duration-300 transform ${
               isProfileActive ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0 group-hover:opacity-0 group-hover:translate-y-4"
             }`}
           >
             <p className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 headtext text-white">
-              Hi, I'm Teguh Ahmadi Zebua
+              Teguh Ahmadi Zebua
             </p>
-            <p className="text-sm sm:text-base subtext text-gray-200">
-              Over the last 3 years, I developed my frontend and backend dev skills to deliver dynamic software and web applications.
+            <p className="text-sm sm:text-base text-gray-300">
+              Full-Stack Developer
             </p>
           </div>
         </GridItem>
 
-        {/* Grid 2: Principles Card */}
-        <GridItem className="grid-default-color col-span-1 md:col-span-4 min-h-[20rem] sm:min-h-[22rem] md:min-h-0">
-          <div ref={grid2Container} className="relative flex items-center justify-center w-full h-full overflow-hidden">
-            <p className="absolute text-xl sm:text-2xl md:text-3xl lg:text-5xl text-gray-500/30 font-bold tracking-wider animate-pulse px-2">
-              CODE IS CRAFT
-            </p>
-            <Card style={{ rotate: "75deg", top: "30%", left: "20%" }} text="GRASP" containerRef={grid2Container} className="hover:scale-110 transition-transform duration-300" />
-            <Card style={{ rotate: "-30deg", top: "60%", left: "45%" }} text="SOLID" containerRef={grid2Container} className="hover:scale-110 transition-transform duration-300" />
-            {/* ... Kartu lainnya ... */}
-            <Card style={{ rotate: "90deg", bottom: "30%", left: "70%" }} text="Design Patterns" containerRef={grid2Container} className="hover:scale-110 transition-transform duration-300" />
-            <Card style={{ rotate: "-45deg", top: "55%", left: "0%" }} text="Design Principles" containerRef={grid2Container} className="hover:scale-110 transition-transform duration-300" />
-            <Card style={{ rotate: "20deg", top: "10%", left: "38%" }} text="SRP" containerRef={grid2Container} className="hover:scale-110 transition-transform duration-300" />
-            <Card style={{ rotate: "30deg", top: "70%", left: "70%" }} image="assets/logos/spring-security.png" containerRef={grid2Container} className="hover:scale-110 transition-transform duration-300" />
-            <Card style={{ rotate: "-45deg", top: "70%", left: "25%" }} image="assets/logos/Spring_Boot.png" containerRef={grid2Container} className="hover:scale-110 transition-transform duration-300" />
-            <Card style={{ rotate: "-45deg", top: "5%", left: "10%" }} image="assets/logos/react.png" containerRef={grid2Container} className="hover:scale-110 transition-transform duration-300" />
+        {/* Grid 2: Summary Card */}
+        <GridItem className="grid-default-color col-span-1 md:col-span-4 min-h-[18rem] sm:min-h-[20rem] md:min-h-0 flex flex-col justify-center p-6 md:p-8">
+          <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
+            Passionate about building <span className="gradient-text-accent">impactful software</span>
+          </h3>
+          <p className="text-sm md:text-base text-neutral-400 leading-relaxed mb-4">
+            Seorang Full-Stack Developer dengan pengalaman mengembangkan aplikasi web dan backend service. 
+            Berpengalaman dalam membangun sistem skala besar menggunakan Java, Spring Boot, Golang, dan React.
+          </p>
+          <div className="flex flex-wrap gap-3 mt-2">
+            {["Java", "Golang", "Spring Boot", "React", "Next.js", "PostgreSQL", "REST API"].map((skill) => (
+              <span key={skill} className="px-3 py-1 text-xs font-medium rounded-full bg-royal/20 text-lavender border border-royal/30">
+                {skill}
+              </span>
+            ))}
           </div>
         </GridItem>
 
-        {/* Grid 3: Time Zone Card */}
+        {/* Grid 3: Location Card */}
         <GridItem className="group grid-black-color col-span-1 md:col-span-2 min-h-[16rem] sm:min-h-[18rem] md:min-h-0">
           <div className="z-10 w-full sm:w-3/4 md:w-[50%] p-4 sm:p-6">
             <p className="text-lg sm:text-xl md:text-2xl font-bold mb-2 headtext group-hover:text-blue-400 transition-colors duration-300">
               Time Zone
             </p>
             <p className="text-xs sm:text-sm md:text-base subtext">
-              I'm based in Mars, and open to remote work worldwide
+              I'm based in Bandung, Indonesia — and open to remote work worldwide
             </p>
           </div>
           <figure className="absolute right-4 sm:right-8 md:left-[30%] top-[15%] sm:top-[20%] md:top-[10%] scale-70 sm:scale-75 md:scale-90 lg:scale-100 group-hover:animate-spin transition-all duration-1000">

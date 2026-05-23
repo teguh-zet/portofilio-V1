@@ -8,6 +8,7 @@ export function Frameworks() {
     "csharp",
     "css3",
     "java",
+    "golang",
     "dotnet",
     "dotnetcore",
     "git",
