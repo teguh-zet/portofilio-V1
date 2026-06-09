@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Navigation = ({ isMobile = false, onItemClick = () => {} }) => {
+const Navigation = ({ isMobile = false, onItemClick = () => {}, activeSection = "home" }) => {
   const navItems = [
     { name: "Home", href: "#home" },
     { name: "About", href: "#aboute" },
@@ -13,13 +13,15 @@ const Navigation = ({ isMobile = false, onItemClick = () => {} }) => {
 
   return (
     <ul className={`flex ${isMobile ? 'flex-col gap-4 py-4' : 'items-center gap-8 sm:gap-10 md:gap-12'}`}>
-      {navItems.map((item, index) => (
+      {navItems.map((item, index) => {
+        const isActive = item.href === `#${activeSection}`;
+        return (
         <motion.li
           key={item.name}
           initial={isMobile ? { opacity: 0, x: -20 } : { opacity: 0, y: -10 }}
           animate={{ opacity: 1, x: 0, y: 0 }}
-          transition={{ 
-            duration: 0.3, 
+          transition={{
+            duration: 0.3,
             delay: isMobile ? index * 0.05 : 0,
             ease: "easeOut"
           }}
@@ -82,13 +84,19 @@ const Navigation = ({ isMobile = false, onItemClick = () => {} }) => {
               }
             }}
             className={`block text-sm sm:text-base font-medium transition-all duration-300
-                     text-neutral-400 hover:text-white
-                     ${isMobile ? 'py-3 px-4 rounded-lg hover:bg-white/10 active:bg-white/20 w-full text-left' : 'hover:scale-105'}`}
+                     ${isActive ? 'text-white' : 'text-neutral-400 hover:text-white'}
+                     ${isMobile ? `py-3 px-4 rounded-lg w-full text-left ${isActive ? 'bg-white/10' : 'hover:bg-white/10 active:bg-white/20'}` : 'hover:scale-105 relative'}`}
           >
             {item.name}
+            {!isMobile && (
+              <span
+                className={`absolute -bottom-1.5 left-0 right-0 mx-auto h-0.5 rounded-full bg-gradient-to-r from-lavender to-aqua transition-all duration-300 ${isActive ? 'w-full opacity-100' : 'w-0 opacity-0'}`}
+              />
+            )}
           </a>
         </motion.li>
-      ))}
+        );
+      })}
     </ul>
   );
 };
@@ -96,6 +104,25 @@ const Navigation = ({ isMobile = false, onItemClick = () => {} }) => {
 // Komponen Navbar Utama
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+
+  // Scroll-spy: highlight the nav item for the section in view
+  useEffect(() => {
+    const ids = ["home", "aboute", "experience", "projects", "certificate", "contact"];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -175,7 +202,7 @@ const Navbar = () => {
 
             {/* Hanya Tampilkan Navigasi Desktop di Layar >= 640px (sm) */}
             <nav className="hidden sm:flex">
-              <Navigation onItemClick={closeMenu} />
+              <Navigation onItemClick={closeMenu} activeSection={activeSection} />
             </nav>
           </div>
         </div>
@@ -203,7 +230,7 @@ const Navbar = () => {
                 transition={{ duration: 0.3, ease: "easeOut" }}
               >
                 <div className="c-space py-4">
-                  <Navigation isMobile={true} onItemClick={closeMenu} />
+                  <Navigation isMobile={true} onItemClick={closeMenu} activeSection={activeSection} />
                 </div>
               </motion.div>
             </>

@@ -58,7 +58,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="relative flex items-center c-space section-spacing" id="contact">
+    <section className="relative flex items-center overflow-hidden c-space section-spacing" id="contact">
       <Particles
         className="absolute inset-0 -z-50"
         quantity={100}
@@ -66,9 +66,16 @@ const Contact = () => {
         color={"#ffffff"}
         refresh
       />
+      {/* Ambient glow */}
+      <div className="aurora-blob aurora-cyan w-[24rem] h-[24rem] -bottom-10 -left-10 opacity-25 -z-40" />
+      <div
+        className="aurora-blob aurora-royal w-[20rem] h-[20rem] -top-10 -right-10 opacity-25 -z-40"
+        style={{ animationDelay: "6s" }}
+      />
       {showAlert && <Alert type={alertType} text={alertMessage} />}
       <div className="flex flex-col items-center justify-center w-full max-w-lg p-8 mx-auto glass-card">
         <div className="flex flex-col items-center w-full gap-4 mb-8 text-center">
+          <span className="section-eyebrow">Get In Touch</span>
           <h2 className="text-heading text-3xl md:text-4xl">
             <span className="gradient-text">Let's Talk</span>
           </h2>

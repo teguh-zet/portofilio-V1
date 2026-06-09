@@ -10,7 +10,22 @@ const About = () => {
   const [isProfileActive, setProfileActive] = useState(false);
 
   return (
-    <section className="c-space section-spacing" id="aboute">
+    <section className="relative overflow-hidden c-space section-spacing" id="aboute">
+      {/* Ambient glow */}
+      <div
+        className="aurora-blob aurora-violet w-[26rem] h-[26rem] -top-10 right-0 opacity-30 -z-10"
+        style={{ animationDelay: "2s" }}
+      />
+
+      <motion.div
+        className="flex justify-center mb-4"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <span className="section-eyebrow">Who I Am</span>
+      </motion.div>
       <motion.h2
         className="text-heading text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4"
         initial={{ opacity: 0, y: 20 }}
@@ -25,7 +40,13 @@ const About = () => {
       </p>
       <div className="section-divider mb-8" />
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem] mt-8 md:mt-12 px-4 md:px-0">
+      <motion.div
+        className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem] mt-8 md:mt-12 px-4 md:px-0"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
 
         {/* Grid 1: Profile Card */}
         <GridItem
@@ -35,6 +56,8 @@ const About = () => {
         >
           <img
             src="assets/foto.jpg"
+            loading="lazy"
+            decoding="async"
             className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:grayscale-0 group-hover:scale-110 ${
               isProfileActive ? "!grayscale-0 !scale-110" : "grayscale"
             }`}
@@ -116,7 +139,7 @@ const About = () => {
           </div>
         </GridItem>
 
-      </div>
+      </motion.div>
     </section>
   );
 };

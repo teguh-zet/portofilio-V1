@@ -6,10 +6,12 @@ import Experiences from "./sections/Experiences.jsx";
 import Certificates from "./sections/Certificates.jsx";
 import Contact from "./sections/Contact.jsx";
 import Footer from './sections/Footer.jsx';
+import ScrollUtilities from './components/ScrollUtilities.jsx';
 
 const App = () => {
   return (
     <div className="container mx-auto max-w-7xl">
+      <ScrollUtilities />
       <Navbar />
       <Hero />
       <About />

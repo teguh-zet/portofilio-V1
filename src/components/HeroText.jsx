@@ -12,8 +12,19 @@ const HeroText = () => {
     <div className="z-10 mt-20 text-center md:mt-40 md:text-left rounded-3xl bg-clip-text">
       {/* Desktop View */}
       <div className="flex-col hidden md:flex c-space">
+        <motion.div
+          variants={variants}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: 0.6 }}
+        >
+          <span className="status-badge">
+            <span className="status-dot" />
+            Available for new opportunities
+          </span>
+        </motion.div>
         <motion.p
-          className="text-lg font-medium text-neutral-500 tracking-widest uppercase"
+          className="text-lg font-medium text-neutral-500 tracking-widest uppercase mt-4"
           variants={variants}
           initial="hidden"
           animate="visible"
@@ -22,7 +33,7 @@ const HeroText = () => {
           Full-Stack Developer
         </motion.p>
         <motion.h1
-          className="text-5xl md:text-6xl font-bold gradient-text mt-2"
+          className="text-5xl md:text-6xl font-bold gradient-text-animated mt-2"
           variants={variants}
           initial="hidden"
           animate="visible"
@@ -71,10 +82,15 @@ const HeroText = () => {
           transition={{ delay: 1.8 }}
         >
           <div className="flex items-center gap-3 sm:gap-4">
-          
+            <a href="#projects" className="btn-cta relative z-10">
+              View My Work
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
             <a
-              href="/assets/Resume_Teguh_Ahmadi_Zebua.pdf"
-              download="Resume_Teguh_Ahmadi_Zebua.pdf"
+              href="/assets/CV_Teguh_Ahmadi_Zebua.pdf"
+              download="CV_Teguh_Ahmadi_Zebua.pdf"
               className="px-5 py-3 sm:px-6 sm:py-3 text-sm font-semibold inline-flex items-center gap-2 relative z-10 rounded-xl border border-white/20 text-white hover:border-lavender/50 hover:bg-white/5 transition-all duration-300"
             >
               Download CV
@@ -103,6 +119,17 @@ const HeroText = () => {
 
       {/* Mobile View */}
       <div className="flex- flex-col space-y-4 md:hidden">
+        <motion.div
+          variants={variants}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: 0.6 }}
+        >
+          <span className="status-badge">
+            <span className="status-dot" />
+            Available for work
+          </span>
+        </motion.div>
         <motion.p
           className="text-sm font-medium text-neutral-500 tracking-widest uppercase"
           variants={variants}
@@ -113,7 +140,7 @@ const HeroText = () => {
           Full-Stack Developer
         </motion.p>
         <motion.h1
-          className="text-4xl font-bold gradient-text"
+          className="text-4xl font-bold gradient-text-animated"
           variants={variants}
           initial="hidden"
           animate="visible"
@@ -162,6 +189,15 @@ const HeroText = () => {
           transition={{ delay: 1.8 }}
         >
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto sm:justify-center">
+            <a
+              href="#projects"
+              className="btn-cta w-full sm:w-auto justify-center relative z-10"
+            >
+              View My Work
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
             <a
               href="/assets/Resume_Teguh_Ahmadi_Zebua.pdf"
               download="Resume_Teguh_Ahmadi_Zebua.pdf"

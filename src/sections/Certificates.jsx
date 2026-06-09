@@ -92,6 +92,9 @@ export default function Certificates() {
 
   return (
     <div className="items-start mt-25 md:mt-35 c-space" id="certificate">
+      <div className="flex justify-center mb-4">
+        <span className="section-eyebrow">{certificates.length} Credentials</span>
+      </div>
       <h2 className="text-heading text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4">
         <span className="gradient-text">Sertifikat & Pelatihan</span>
       </h2>

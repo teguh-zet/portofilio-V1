@@ -9,32 +9,43 @@ const Project = ({
   href,
   image,
   tags,
+  index = 0,
+  setPreview,
 }) => {
   const [isHidden, setIsHidden] = useState(false);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
-  
+
   return (
     <>
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
         className="group"
       >
         <div className="flex flex-col sm:flex-row items-stretch gap-4 sm:gap-6 md:gap-8 py-6 sm:py-8 md:py-10 lg:py-12">
-          
+
+          {/* Index number */}
+          <div className="hidden lg:flex items-start pt-2">
+            <span className="project-index text-4xl xl:text-5xl font-bold tabular-nums">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+          </div>
+
           {/* Left Side - Image */}
-          <motion.div 
+          <motion.div
             className="relative w-full sm:w-32 md:w-40 lg:w-48 xl:w-56 flex-shrink-0"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <div 
+            <div
               className="relative overflow-hidden rounded-lg sm:rounded-xl cursor-pointer
                          bg-gradient-to-br from-gray-800 to-gray-900
                          shadow-lg hover:shadow-2xl transition-shadow duration-300"
               onClick={() => setIsHidden(true)}
+              onMouseEnter={() => setPreview && setPreview(image)}
+              onMouseLeave={() => setPreview && setPreview(null)}
             >
               {/* Skeleton Loader */}
               {!isImageLoaded && (
@@ -42,9 +53,11 @@ const Project = ({
               )}
               
               {/* Main Image */}
-              <img 
-                src={image} 
+              <img
+                src={image}
                 alt={title}
+                loading="lazy"
+                decoding="async"
                 onLoad={() => setIsImageLoaded(true)}
                 className={`w-full h-48 sm:h-32 md:h-36 lg:h-40 xl:h-44
                            object-cover transition-all duration-500
@@ -87,7 +100,7 @@ const Project = ({
               <motion.h3 
                 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold 
                          text-white mb-2 sm:mb-3 line-clamp-2
-                         hover:text-lavender-400 transition-colors duration-200 cursor-pointer"
+                         group-hover:text-lavender transition-colors duration-200 cursor-pointer"
                 onClick={() => setIsHidden(true)}
                 whileHover={{ x: 5 }}
               >
