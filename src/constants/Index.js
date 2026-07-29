@@ -1,5 +1,36 @@
 export const myProjects = [
   {
+    id: 5,
+    title: "SIMRS Digital Hospital",
+    description: "Sistem Informasi Manajemen Rumah Sakit (SIMRS) komprehensif yang dirancang untuk mendigitalkan proses operasional, pendaftaran pasien, rekam medis, dan pelaporan rumah sakit modern.",
+    subDescription: [
+      "Mengembangkan backend service yang robust menggunakan Golang untuk menangani transaksi harian rumah sakit yang tinggi.",
+      "Membangun dashboard interaktif dan responsif menggunakan React untuk staf rumah sakit dan manajemen.",
+      "Mengimplementasikan sistem dashboard pelaporan klaim JKN, statistik pasien, dan pendapatan rumah sakit secara real-time.",
+      "Menerapkan sistem keamanan tingkat tinggi dengan role-based access control untuk berbagai departemen."
+    ],
+    href: "https://dev-simrs-rsdemo.digitalhospital.co.id/auth/login",
+    logo: "",
+    image: "/assets/projects/simrs.png",
+    tags: [
+      {
+        id: 1,
+        name: "Golang",
+        path: "/assets/logos/golang.svg",
+      },
+      {
+        id: 2,
+        name: "React Js",
+        path: "/assets/logos/react.svg",
+      },
+      {
+        id: 3,
+        name: "TailwindCSS",
+        path: "/assets/logos/tailwindcss.svg",
+      },
+    ],
+  },
+  {
     id: 1,
     title: "PUB Scholarship Web Portal",
     description: "This is the official website for the PUB Scholarship Program offered by Universitas Nasional PASIM (PASIM National University), located in Bandung, Indonesia.",
@@ -176,7 +207,7 @@ export const experiences = [
     title: "Backend Golang Developer",
     job: "PT. Inotal Sistema Internasional",
     project: "SIMRS",
-    date: "Juli 2025 - Mei 2026",
+    date: "Juli 2025 - Juli 2026",
     contents: [
       "Mengembangkan backend service Sistem Informasi Manajemen Rumah Sakit (SIMRS) menggunakan Golang dengan arsitektur yang scalable dan maintainable.",
       "Merancang dan mengimplementasikan RESTful API untuk modul registrasi pasien, rawat jalan, rawat inap, farmasi, dan billing rumah sakit.",
